@@ -1,0 +1,41 @@
+name: Package Skills
+
+on:
+  release:
+    types: [created]
+  workflow_dispatch:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Package all skills
+        run: |
+          mkdir -p dist
+          for skill_dir in skills/*/; do
+            skill_name=$(basename "$skill_dir")
+            if [ -f "$skill_dir/SKILL.md" ]; then
+              echo "Packaging $skill_name..."
+              cd "$skill_dir"
+              zip -r "../../dist/${skill_name}.skill" . -x "*.DS_Store" "__pycache__/*" "node_modules/*" "evals/*"
+              cd ../..
+              echo "  Created dist/${skill_name}.skill"
+            fi
+          done
+
+      - name: Upload to release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.skill
+
+      - name: Upload artifacts
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: skill-packages
+          path: dist/*.skill
