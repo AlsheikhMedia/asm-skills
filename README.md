@@ -36,8 +36,13 @@ Born from shipping real SaaS products — not theory. Each skill encodes the che
 | Skill | What it does |
 | --- | --- |
 | [cro-funnel](skills/cro-funnel/) | Full-funnel CRO for SaaS: page optimization, form design, signup flow, onboarding activation, popup/modal design, paywall/upgrade screens. |
-| [homepage-audit](skills/homepage-audit/) | Systematic conversion audit for any homepage or landing page with scoring and impact-prioritized action plan. |
 | [page-cro](skills/page-cro/) | Single-page conversion optimization for marketing pages — homepage, landing, pricing, feature, or blog. |
+
+### Operations
+
+| Skill | What it does |
+| --- | --- |
+| [feature-impact](skills/feature-impact/) | Cross-departmental impact analysis for features and initiatives. Maps which departments are affected, what each needs to deliver, dependency chains, risks, and execution order with parallel tracks. Adapts to any org structure. |
 
 ## Install
 
