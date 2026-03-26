@@ -1,28 +1,20 @@
----
-name: tech-writer
-description: |
-  Technical documentation generator. Produces README files, API docs, knowledge base articles, changelogs, migration guides, onboarding docs, and inline code documentation. Reads actual code to generate accurate, scannable docs. Use when someone says: "write docs", "document this", "API documentation", "README", "knowledge base article", "changelog", "migration guide", "onboarding docs".
-allowed-tools: Read Glob Grep Write Edit
-metadata:
-  author: AlSheikh Media
-  version: 1.0.0
----
+# Tech Writer — Execution Module
 
-# Tech Writer — Technical Documentation Generator
+Load this when the impact execution loop needs to write technical documentation (README, API docs, KB articles, changelogs, migration guides).
 
-You are a senior technical writer generating documentation from real code. You read the actual implementation, not guesses. Every doc you produce is scannable, example-rich, and accurate to the codebase at the time of writing.
+## Workflow
 
-## Modes
+### Modes
 
-**Quick Mode** (default): Generate a single doc with sensible defaults. Use when the user says "write a README" or "document this" without further detail.
+**Quick Mode** (default): Generate a single doc with sensible defaults. Use when the task is "write a README" or "document this" without further detail.
 
-**Full Mode**: Multi-doc generation with cross-linking. Use when the user says "full docs", "document everything", or when the project has no existing documentation.
+**Full Mode**: Multi-doc generation with cross-linking. Use when the task is "full docs", "document everything", or when the project has no existing documentation.
 
 If uncertain, start with Quick and offer to expand.
 
-## Step 1: Detect Doc Type
+### Step 1: Detect Doc Type
 
-Classify what the user needs:
+Classify what's needed:
 
 | Type | Trigger | Output |
 |------|---------|--------|
@@ -36,7 +28,7 @@ Classify what the user needs:
 
 If ambiguous, infer from context. New project with no README? Generate a README.
 
-## Step 2: Scan Project Context
+### Step 2: Scan Project Context
 
 Before writing anything, read the codebase:
 
@@ -50,7 +42,7 @@ Before writing anything, read the codebase:
 
 Do NOT skip this step. Docs that don't match the actual code are worse than no docs.
 
-## Step 3: Detect Audience
+### Step 3: Detect Audience
 
 | Audience | Signals | Style |
 |----------|---------|-------|
@@ -60,12 +52,22 @@ Do NOT skip this step. Docs that don't match the actual code are worse than no d
 
 Default to **Developers** unless the doc type or user input suggests otherwise.
 
-## Step 4: Generate Documentation
+### Step 4: Generate Documentation
 
 Follow the type-specific template below. Every doc MUST include:
 - Real code examples pulled from the actual codebase
 - Accurate file paths and function signatures
 - No placeholder text like "describe your project here"
+
+### Step 5: Offer Next Steps
+
+After generating, ask:
+
+- "Want me to write more docs? (API reference, onboarding guide, etc.)"
+- "Want me to update existing docs to match current code?"
+- "Want me to add inline documentation to specific files?"
+
+## Templates
 
 ### README Template
 
@@ -171,15 +173,7 @@ curl -X {METHOD} {path} -H "Authorization: Bearer $TOKEN"
 - {Removed features}
 ```
 
-## Step 5: Offer Next Steps
-
-After generating, ask:
-
-- "Want me to write more docs? (API reference, onboarding guide, etc.)"
-- "Want me to update existing docs to match current code?"
-- "Want me to add inline documentation to specific files?"
-
-## Key Principles
+## Principles
 
 **Show, don't tell.** Code examples beat descriptions. `curl -X POST /api/users -d '{"name":"test"}'` teaches more than "send a POST request to create a user."
 
@@ -189,7 +183,7 @@ After generating, ask:
 
 **Maintained or deleted.** Flag docs that reference deprecated code. Include "Last updated" dates. If a doc can't be kept current, it shouldn't exist.
 
-## Example: Quick Mode — "Write a README for this project"
+## Example
 
 Given a Next.js SaaS project with Supabase backend:
 

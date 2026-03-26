@@ -198,11 +198,20 @@ When the user says "let's work through the list", "next item", or comes back in 
 2. **Find unblocked**: check if each item's blockers are resolved
 3. **Present next**: "Next unblocked: [Department]: [deliverable]. Work on it, or spin an agent?"
 4. **Non-blocking items**: "3 items are unblocked and non-blocking. Spin agents for all 3?"
-5. **Work the item**
-6. **Mark done**: close issue or check box + append `— DONE [date]`
-7. **Update progress count**
-8. **Repeat** until empty
-9. **Done**: "Impact list clear — all {N} items complete. Ship it."
+5. **Load execution module**: match the task to its exec module and load it:
+   - Writing docs (README, API, KB, changelog) → `references/exec-tech-writer.md`
+   - Legal documents (ToS, privacy policy, SLA) → `references/exec-legal.md`
+   - Social media content (posts, threads, calendars) → `references/exec-social-media.md`
+   - Analytics setup (tracking, dashboards, funnels) → `references/exec-analyst.md`
+   - Support content (KB articles, FAQ, canned responses) → `references/exec-support.md`
+   - Pricing/finance (unit economics, revenue model) → `references/exec-finance.md`
+   - Brand/positioning (messaging, tone, visual identity) → `references/exec-brand.md`
+   - Code/infrastructure tasks → use Claude's native capability (no exec module needed)
+6. **Do the work**: follow the exec module's workflow to produce the actual deliverable
+7. **Mark done**: close issue or check box + append `— DONE [date]`
+8. **Update progress count**
+9. **Repeat** until empty
+10. **Done**: "Impact list clear — all {N} items complete. Ship it."
 
 ## Resuming Across Sessions
 
@@ -217,7 +226,7 @@ If open items found:
 
 ## When to Read Reference Files
 
-Load only for affected departments:
+**Analysis** (Steps 2-5 — what needs doing):
 - Product → `references/product.md`
 - Engineering → `references/engineering.md`
 - Design → `references/design.md`
@@ -226,6 +235,15 @@ Load only for affected departments:
 - Ops → `references/ops.md`
 - Extended org structure → `references/org-structure.md`
 - Task tracking → `references/tracking.md`
+
+**Execution** (Step 7 — doing the work):
+- Writing docs → `references/exec-tech-writer.md`
+- Legal documents → `references/exec-legal.md`
+- Social media content → `references/exec-social-media.md`
+- Analytics setup → `references/exec-analyst.md`
+- Support content → `references/exec-support.md`
+- Pricing/finance → `references/exec-finance.md`
+- Brand/positioning → `references/exec-brand.md`
 
 ## Key Principles
 
