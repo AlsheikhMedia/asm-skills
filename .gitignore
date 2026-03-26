@@ -3,4 +3,6 @@ __pycache__/
 node_modules/
 *.pyc
 dist/
+*.skill
 *-workspace/
+.claude/
