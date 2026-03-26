@@ -71,4 +71,4 @@ claude install ./dist/<skill-name>.skill
 - **page-cro**: Single-page conversion optimization. References `experiments.md`.
 
 ### Operations
-- **feature-impact**: Cross-departmental impact analysis. Maps affected departments, deliverables, dependency chains, risks, execution order. 12 reference files (one per department/workstream). Defaults to ASM 8-workstream model but adapts via `.claude/org-structure.md` override.
+- **impact**: Cross-departmental impact analysis. Maps affected departments, deliverables, dependency chains, risks, execution order. 12 reference files (one per department/workstream). Defaults to ASM 8-workstream model but adapts via `.claude/org-structure.md` override.

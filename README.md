@@ -18,7 +18,7 @@ claude install github:AlsheikhMedia/asm-skills/skills/<skill-name>
 claude install github:AlsheikhMedia/asm-skills/skills/launch-readiness
 
 # Map cross-team impact before building a feature
-claude install github:AlsheikhMedia/asm-skills/skills/feature-impact
+claude install github:AlsheikhMedia/asm-skills/skills/impact
 
 # Write conversion-focused marketing copy
 claude install github:AlsheikhMedia/asm-skills/skills/copywriting
@@ -33,7 +33,7 @@ Once installed, just describe what you need in Claude Code. The skills trigger a
 | Skill | What it does | Try saying... |
 | --- | --- | --- |
 | [launch-readiness](skills/launch-readiness/) | Audits your SaaS project across 12 domains: error monitoring, CI/CD, migrations, staging, design system, page specs, testing, seed data, security, observability, feature flags. Produces a gap report with prioritized fixes. Also bootstraps new projects from scratch. | *"Am I ready to launch?"* |
-| [feature-impact](skills/feature-impact/) | Maps which departments a feature touches, what each needs to deliver, dependency chains between them, risks if skipped, and a phased execution order with parallel tracks. Works with any org structure. | *"What's the impact of adding live chat?"* |
+| [impact](skills/impact/) | Maps which departments a feature touches, what each needs to deliver, dependency chains between them, risks if skipped, and a phased execution order with parallel tracks. Works with any org structure. | *"What's the impact of adding live chat?"* |
 | [save](skills/save/) | End-of-session saver — updates project memory, commits changes with a clear message, and asks before pushing. Keeps context across sessions. | *"Save progress"* |
 
 ### Workflow
