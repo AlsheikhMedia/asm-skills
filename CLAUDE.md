@@ -48,7 +48,7 @@ claude install github:AlsheikhMedia/asm-skills/skills/<skill-name>
 claude install ./dist/<skill-name>.skill
 ```
 
-## Current Skills (13)
+## Current Skills (20)
 
 ### Infrastructure
 - **launch-readiness**: 12-domain SaaS audit (error monitoring, CI/CD, migrations, staging, design system, page specs, testing, E2E, seed data, security, observability, feature flags). Audit or bootstrap mode. Reference docs loaded lazily by domain tier.
@@ -72,3 +72,12 @@ claude install ./dist/<skill-name>.skill
 
 ### Operations
 - **impact**: Cross-departmental impact analysis with execution tracking. 6-core department model (Product, Engineering, Design, QA, Marketing, Ops) works for any team. Extended 14-department mode when `.claude/org-structure.md` exists. Tracks deliverables via GitHub Issues, GitLab, Codeberg, Bitbucket, or local markdown. v2.0.
+
+### Golden Team (Role-Based)
+- **tech-writer**: Technical documentation — README, API docs, KB articles, changelogs, migration guides. Reads actual code.
+- **legal**: Legal documents — ToS, Privacy Policy, Cookie Policy, DPA, SLA. Jurisdiction-aware (UAE/US/EU). Flags [REVIEW NEEDED].
+- **social-media**: Social content — platform-specific posts (X, LinkedIn, Instagram), content calendars, threads, launch announcements.
+- **analyst**: Data analysis — analytics setup, event tracking plans, KPI dashboards, funnel analysis, A/B test design.
+- **support**: Customer support — KB articles, FAQs, canned responses, onboarding emails, help center structure.
+- **finance**: Startup finance — pricing strategy, unit economics, revenue projections, cost analysis, SaaS metrics.
+- **brand**: Brand identity — positioning, messaging framework, tone of voice, visual identity brief, brand story.

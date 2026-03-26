@@ -61,6 +61,20 @@ Once installed, just describe what you need in Claude Code. The skills trigger a
 | [cro-funnel](skills/cro-funnel/) | Full-funnel CRO covering every stage: page optimization, form design, signup flow, onboarding activation, popup/modal design, and paywall/upgrade screens. Each stage has its own framework. | *"Optimize our signup funnel"* |
 | [page-cro](skills/page-cro/) | Single-page conversion optimization with A/B test experiment ideas. Analyzes value prop, headline, CTA, trust signals, and page structure for any marketing page. | *"Why isn't our landing page converting?"* |
 
+### The Golden Team
+
+Role-based skills that give a solo founder an entire virtual team.
+
+| Skill | Role it replaces | Try saying... |
+| --- | --- | --- |
+| [tech-writer](skills/tech-writer/) | Technical Writer — README, API docs, knowledge base articles, changelogs, migration guides. Reads actual code before writing. | *"Write docs for this project"* |
+| [legal](skills/legal/) | Legal/Compliance — Terms of Service, Privacy Policy, Cookie Policy, DPA, SLA. Jurisdiction-aware (UAE, US, EU/GDPR). Flags sections needing lawyer review. | *"Generate a privacy policy"* |
+| [social-media](skills/social-media/) | Social Media Manager — Platform-specific posts (X, LinkedIn, Instagram), content calendars, launch announcements, threads. | *"Write a launch announcement"* |
+| [analyst](skills/analyst/) | Data Analyst — Analytics setup, event tracking plans, KPI dashboards, funnel analysis, A/B test design. | *"Set up analytics for our app"* |
+| [support](skills/support/) | Customer Support — Knowledge base articles, FAQs, canned responses, onboarding emails, help center structure. | *"Generate an FAQ"* |
+| [finance](skills/finance/) | Finance — Pricing strategy, unit economics, revenue projections, cost analysis, SaaS metrics (MRR, LTV, CAC). | *"How should I price this?"* |
+| [brand](skills/brand/) | Brand Designer — Positioning statement, messaging framework, tone of voice, visual identity brief, brand story. | *"Create a brand guide"* |
+
 ## Install
 
 ### Claude Code (recommended)
