@@ -2,6 +2,9 @@
 name: launch-readiness
 description: |
   Comprehensive SaaS launch readiness audit and implementation guide. Covers 12 domains: design system, page-type specs, component testing, E2E testing, CI/CD pipeline, error monitoring, staging environment, feature flags, seed data, database migrations, observability, and security. Works for new projects (bootstrap everything) and existing projects (audit gaps, prioritize fixes). Use this skill whenever someone says: "audit my project", "am I ready to launch", "what am I missing", "project health check", "set up infrastructure", "bootstrap a new project", "pre-launch checklist", "production readiness", "what do I need before deploying", or any question about what infrastructure, testing, or tooling a SaaS app needs before going live. Also trigger when someone asks about best practices for app development, deploy workflow, or wants to avoid common launch mistakes.
+metadata:
+  author: AlSheikh Media
+  version: 1.0.0
 ---
 
 # Launch Readiness — SaaS Audit & Bootstrap Skill
