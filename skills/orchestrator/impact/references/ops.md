@@ -267,7 +267,7 @@ Research is a Foundation Layer workstream. Most feature-level work does NOT trig
 
 - Building without validating (assumption-driven development)
 - Using outdated competitor data (market moves fast)
-- ICP is too broad ("SMBs" vs. "FM companies with 50-200 cleaners in GCC")
+- ICP is too broad ("SMBs" vs. "B2B companies with 50-200 employees in your target market")
 - No re-validation after pivot (research from 6 months ago may not apply)
 - Research done but not shared (stays in a doc nobody reads)
 

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Is
 
-A collection of Claude Code skills by AlSheikh Media. Skills are markdown-based instruction sets that Claude Code loads on demand to perform domain-specific tasks (audits, bootstrapping, etc.).
+A collection of Claude Code skills by AlSheikh Media for solo founders and small teams. Skills are markdown-based instruction sets that Claude Code loads on demand to perform domain-specific tasks (audits, bootstrapping, etc.).
 
 ## Repository Structure
 

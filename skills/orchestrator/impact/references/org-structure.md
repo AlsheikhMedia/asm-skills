@@ -28,7 +28,7 @@ To define a custom org, create `.claude/org-structure.md` with department names,
 
 ## Extended: 14-Department Model
 
-Loaded when `.claude/org-structure.md` exists or user says "extended" / "full org". Based on AlSheikh Media's 8-workstream + engineering functions model.
+Loaded when `.claude/org-structure.md` exists or user says "extended" / "full org". A comprehensive 8-workstream + engineering functions model for growing teams.
 
 ### Foundation Layer
 

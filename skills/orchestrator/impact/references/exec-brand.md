@@ -248,7 +248,7 @@ How the visual identity manifests in the product:
 
 ## Example
 
-**Task**: "Create a brand guide for our cleaning operations SaaS"
+**Task**: "Create a brand guide for our project management SaaS"
 Context scan reveals: scheduling and job management app for cleaning companies, 5-50 employees, competes with Jobber and Housecall Pro.
 
 ```markdown

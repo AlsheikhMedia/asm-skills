@@ -257,7 +257,7 @@ If open items found:
 
 **No filler.** Department not affected? Don't mention it. Risk is theoretical? Don't list it.
 
-## Example: Quick Mode — "Add a referral program to HelpYard"
+## Example: Quick Mode — "Add a referral program to our SaaS app"
 
 ```markdown
 # Impact — Referral Program

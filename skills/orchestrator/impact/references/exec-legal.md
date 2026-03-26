@@ -31,7 +31,7 @@ If the task is "legal docs" without specifying, generate ToS + Privacy Policy as
 
 Ask: **"Which jurisdiction? UAE, US, EU, or multiple?"**
 
-Only ask once. If context makes it obvious (e.g., `.ae` domain, DIFC references), infer and confirm.
+Only ask once. If context makes it obvious (e.g., domain TLD, local legal references), infer and confirm.
 
 Use the Jurisdictions Reference below for jurisdiction-specific requirements:
 - **UAE**: Federal Decree-Law No. 45/2021, DIFC Data Protection Law
@@ -464,7 +464,7 @@ When operating across jurisdictions:
 
 **Last updated:** March 26, 2026
 
-HelpYard ("we", "us") operates helpyard.com. This policy explains what data we collect, why, and your rights under the General Data Protection Regulation (GDPR).
+[Company Name] ("we", "us") operates [your-domain.com]. This policy explains what data we collect, why, and your rights under the General Data Protection Regulation (GDPR).
 
 ## 1. Data We Collect
 

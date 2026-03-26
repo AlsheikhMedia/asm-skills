@@ -188,15 +188,15 @@ curl -X {METHOD} {path} -H "Authorization: Bearer $TOKEN"
 Given a Next.js SaaS project with Supabase backend:
 
 ```markdown
-# HelpYard
+# MyApp
 
 Customer support platform with AI-powered ticket routing and knowledge base.
 
 ## Quick Start
 
 \`\`\`bash
-git clone https://github.com/alsheikh/helpyard.git
-cd helpyard
+git clone https://github.com/yourorg/myapp.git
+cd myapp
 cp .env.example .env.local    # Fill in Supabase + OpenAI keys
 npm install
 npm run dev                    # http://localhost:3000
