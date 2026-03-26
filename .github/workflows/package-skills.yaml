@@ -16,15 +16,12 @@ jobs:
       - name: Package all skills
         run: |
           mkdir -p dist
-          for skill_dir in skills/*/; do
+          find skills -name "SKILL.md" -print0 | while IFS= read -r -d '' skillfile; do
+            skill_dir=$(dirname "$skillfile")
             skill_name=$(basename "$skill_dir")
-            if [ -f "$skill_dir/SKILL.md" ]; then
-              echo "Packaging $skill_name..."
-              cd "$skill_dir"
-              zip -r "../../dist/${skill_name}.skill" . -x "*.DS_Store" "__pycache__/*" "node_modules/*" "evals/*"
-              cd ../..
-              echo "  Created dist/${skill_name}.skill"
-            fi
+            echo "Packaging $skill_name from $skill_dir..."
+            (cd "$skill_dir" && zip -r "$GITHUB_WORKSPACE/dist/${skill_name}.skill" . -x "*.DS_Store" "__pycache__/*" "node_modules/*" "evals/*")
+            echo "  Created dist/${skill_name}.skill"
           done
 
       - name: Upload to release
