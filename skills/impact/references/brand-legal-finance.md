@@ -2,6 +2,11 @@
 
 These three Foundation Layer workstreams are grouped because they share a trigger pattern: most feature-level work does NOT involve them. They're triggered only when an initiative changes something fundamental.
 
+## When to Skip
+
+**Typically affected when:** new product line, new data collection, pricing change, new market entry
+**Skip if:** feature within existing product, no new data collection, no pricing change, no new market
+
 ## When Foundation Layer Is Triggered
 
 | Workstream | Trigger | Example |

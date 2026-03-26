@@ -2,6 +2,11 @@
 
 When a feature, task, or initiative affects QA/Testing, use this checklist to identify specific deliverables, dependencies, and risks.
 
+## When to Skip
+
+**Typically affected when:** any code change, schema change, new feature
+**Skip if:** pure content update, pure marketing campaign, pure business process change with no code
+
 ## What to Check
 
 ### Test Planning

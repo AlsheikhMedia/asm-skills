@@ -2,6 +2,14 @@
 
 These two cross-cutting engineering functions are grouped because they share a pattern: both are frequently forgotten until after launch, and both are cheaper to address during development than after.
 
+## When to Skip
+
+**Analytics — Typically affected when:** new user-facing feature, new pages, campaign launch
+**Analytics — Skip if:** no new user actions to track, no new pages, no campaign
+
+**Security — Typically affected when:** auth changes, new data types, new API endpoints, third-party integrations
+**Security — Skip if:** no auth changes, no new data types, no new API endpoints, no third-party integrations
+
 ---
 
 ## Analytics

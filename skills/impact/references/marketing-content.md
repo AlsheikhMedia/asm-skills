@@ -2,6 +2,11 @@
 
 When a feature, task, or initiative affects Marketing or Content, use this checklist to identify specific deliverables, dependencies, and risks.
 
+## When to Skip
+
+**Typically affected when:** user-facing feature launch, campaign, pricing change
+**Skip if:** internal tooling, infrastructure sprint, bug fix, backend-only change invisible to users
+
 ## What to Check
 
 ### Content & Messaging

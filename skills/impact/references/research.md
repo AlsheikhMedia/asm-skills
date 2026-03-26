@@ -4,6 +4,11 @@ When a feature, task, or initiative affects the Research workstream, use this ch
 
 Research is a Foundation Layer workstream. Most feature-level work does NOT trigger Research — it's only involved when the initiative changes something fundamental about who you're serving, what market you're in, or what competitors you're facing.
 
+## When to Skip
+
+**Typically affected when:** new product or product line, new market segment, competitive landscape shift, pricing model overhaul
+**Skip if:** feature within existing product for existing market, no new data types, no competitive positioning shift
+
 ## When Research Is Triggered
 
 - New product or product line
@@ -52,6 +57,15 @@ Research is a Foundation Layer workstream. Most feature-level work does NOT trig
 | Sales | Field feedback, prospect objections, lost deal reasons | Research needs real-world signal |
 | Customer Success | Customer feedback, usage patterns, churn reasons | Research needs retention signal |
 | Product | Feature usage data, adoption metrics | Research needs product signal |
+
+## Effort Estimation Guide
+
+| Research Type | Typical Range |
+|--------------|--------------|
+| Competitive analysis refresh | 1-2 days |
+| Customer interview round (5 interviews) | 1-2 weeks |
+| Market sizing | 1-3 days |
+| Pricing research | 2-5 days |
 
 ## Common Mistakes
 

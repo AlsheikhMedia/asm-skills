@@ -2,6 +2,11 @@
 
 When a feature, task, or initiative affects Customer Success, use this checklist to identify specific deliverables, dependencies, and risks.
 
+## When to Skip
+
+**Typically affected when:** user-facing behavior change, new feature customers will interact with, breaking change
+**Skip if:** internal tooling, infrastructure change, backend-only, no change to user experience
+
 ## What to Check
 
 ### Support Readiness

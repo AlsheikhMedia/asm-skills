@@ -2,6 +2,11 @@
 
 When a feature, task, or initiative affects the Design/UX team, use this checklist to identify specific deliverables, dependencies, and risks.
 
+## When to Skip
+
+**Typically affected when:** new UI pages, component changes, user flow changes
+**Skip if:** backend-only, API-only, infrastructure, content-only, no visual changes
+
 ## What to Check
 
 ### UI Changes

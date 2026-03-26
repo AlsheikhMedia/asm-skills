@@ -2,6 +2,11 @@
 
 When a feature, task, or initiative affects the Development team, use this checklist to identify specific deliverables, dependencies, and risks.
 
+## When to Skip
+
+**Typically affected when:** code changes needed, schema changes, new UI components or pages
+**Skip if:** pure marketing campaign with no code, pure content initiative, business process change with no code involved
+
 ## What to Check
 
 ### Scope & Architecture

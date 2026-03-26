@@ -2,6 +2,11 @@
 
 When a feature, task, or initiative affects the Product team, use this checklist to identify specific deliverables, dependencies, and risks.
 
+## When to Skip
+
+**Typically affected when:** new feature, pricing change, launch planning
+**Skip if:** pure bug fix, infrastructure-only sprint with no user-facing changes, routine content update
+
 ## What to Check
 
 ### Requirements & Specification

@@ -2,6 +2,11 @@
 
 When a feature, task, or initiative affects DevOps or Infrastructure, use this checklist to identify specific deliverables, dependencies, and risks.
 
+## When to Skip
+
+**Typically affected when:** new service, environment changes, CI/CD pipeline updates, deployment config
+**Skip if:** pure content update, marketing campaign, UI-only change with no infrastructure impact
+
 ## What to Check
 
 ### Deployment

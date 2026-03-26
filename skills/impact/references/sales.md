@@ -2,6 +2,11 @@
 
 When a feature, task, or initiative affects the Sales team, use this checklist to identify specific deliverables, dependencies, and risks.
 
+## When to Skip
+
+**Typically affected when:** new feature visible to prospects, pricing change, competitive positioning shift
+**Skip if:** internal tooling, infrastructure change, bug fix, backend change invisible to customers
+
 ## What to Check
 
 ### Enablement
@@ -61,6 +66,17 @@ When a feature, task, or initiative affects the Sales team, use this checklist t
 - [ ] Target account list
 - [ ] Outreach sequence templates
 - [ ] Discovery call framework
+
+## Effort Estimation Guide
+
+| Deliverable | Typical Range |
+|------------|--------------|
+| Demo script update | 2-4 hours |
+| Battle card update | 2-4 hours |
+| Feature one-pager | 0.5-1 day |
+| Sales playbook (new product) | 3-5 days |
+| Pricing talk track | 1-2 hours |
+| Outreach sequence (5 emails) | 1-2 days |
 
 ## Common Mistakes
 
