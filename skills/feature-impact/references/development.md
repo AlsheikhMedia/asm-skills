@@ -72,6 +72,15 @@ When a feature, task, or initiative affects the Development team, use this check
 - [ ] Accessibility (labels, keyboard nav, contrast)
 - [ ] Route protection (auth guards)
 
+### Landing Page / Marketing Page
+- [ ] OG images and social sharing metadata (title, description, image)
+- [ ] Twitter/X card meta tags
+- [ ] Analytics pixels and tracking events (page view, form submit, CTA click)
+- [ ] Performance budget (above-fold load time < 1.5s for campaign pages)
+- [ ] UTM parameter handling (capture and store for attribution)
+- [ ] Form validation and submission flow
+- [ ] Confirmation/thank-you page or state
+
 ### Feature Flag Gated Launch
 - [ ] Flag defined in flag system
 - [ ] Code paths for flag on/off
@@ -82,7 +91,7 @@ When a feature, task, or initiative affects the Development team, use this check
 
 | Scope | Typical Range | Includes |
 |-------|--------------|----------|
-| Schema change only | 0.5-1 day | Migration + model update + seed update |
+| Schema change only | 0.5-1 day | Migration + model update + seed update. Multiply by number of related tables for complex schema changes. |
 | Single API endpoint | 0.5-2 days | Implementation + validation + tests |
 | Single page/component | 1-3 days | UI + states + responsive + accessibility |
 | Full feature (schema + API + UI) | 3-10 days | All of the above + integration |

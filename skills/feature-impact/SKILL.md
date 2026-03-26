@@ -19,7 +19,7 @@ This skill operates in two modes:
 
 **Full Mode** (default for complex initiatives): Detailed checklist per department with specific deliverables, dependencies, risks, timeline estimates, and parallel track visualization. Triggered when the feature touches 3+ departments, involves infrastructure changes, or the user says "full" or "detailed."
 
-You infer the mode from complexity. If uncertain, start with Quick and offer to expand.
+You infer the mode from complexity, but also consider **timeline**: if the stated timeline is under 3 days, prefer Quick mode even if multiple departments are involved — the coordination overhead of Full mode output exceeds the initiative's duration. If uncertain, start with Quick and offer to expand.
 
 ## Step 1: Understand the Initiative
 
@@ -83,10 +83,16 @@ For each affected department, identify:
 3. **Hard dependencies** (cannot start until X completes)
 4. **Soft dependencies** (can start in parallel but needs X before finishing)
 
+Also identify **external dependencies** — things outside the org:
+5. **Third-party service provisioning** (creating accounts, obtaining API keys/DSNs, sandbox setup)
+6. **Vendor/partner deliverables** (influencer content, agency work, contractor timelines)
+7. **Platform approvals** (App Store review, API access requests, DNS propagation)
+
 Build a dependency chain. Look for:
 - **Critical path**: The longest chain of hard dependencies — this determines minimum timeline
 - **Parallel tracks**: Work that can happen simultaneously
 - **Bottlenecks**: Departments that many others are waiting on
+- **Zero-slack sequential chains**: If the entire critical path is sequential with no parallel work, flag this explicitly — one blocker delays everything, there is no schedule buffer
 
 ## Step 4: Assess Risks
 
@@ -99,6 +105,14 @@ Categorize risks as:
 - **Launch blocker**: Cannot ship without this
 - **Debt creator**: Can ship but creates problems later
 - **Missed opportunity**: Won't break anything but leaves value on the table
+
+Also assess:
+
+**Timeline feasibility**: Sum the effort estimates for all deliverables on the critical path. Compare against the stated timeline. If estimated effort exceeds the timeline, flag the gap explicitly and suggest what to cut, parallelize, or defer.
+
+**Gate/kill decisions**: If the initiative is experimental (campaign validation, MVP test, A/B experiment), insert decision gates into the execution order. After Phase 1, evaluate: does [metric] meet [threshold]? If no, execute [pivot/kill plan] instead of proceeding to Phase 2.
+
+**Zero-slack warning**: If the critical path is fully sequential with no parallel tracks and no buffer, flag this as a schedule risk — any single blocker delays the entire initiative.
 
 ## Step 5: Produce the Report
 
@@ -175,6 +189,25 @@ Sequential — converges parallel tracks.
 | Step | Department | Deliverable | Est. | Depends On |
 |------|------------|-------------|------|------------|
 | 3.1  | [Dept]     | [What]      | [Xd] | 2A + 2B    |
+
+**Note:** If all work is sequential with no parallel tracks, use a single phase. State explicitly: "No parallel tracks — strict sequential dependency chain. Any single blocker delays the entire initiative."
+
+**Note:** For experimental/validation initiatives, insert a decision gate between phases:
+
+> **Gate: Evaluate [metric] against [threshold].**
+> - If met → proceed to Phase 2.
+> - If not met → execute pivot plan: [specific alternative].
+
+## Timeline Feasibility
+
+| | Hours |
+|---|---|
+| Critical path effort | [sum] |
+| Parallel work (not on critical path) | [sum] |
+| Stated timeline | [X days = Y hours] |
+| **Gap** | [over/under by Z hours] |
+
+[If gap exists: flag it and suggest what to cut, defer, or parallelize]
 
 ## Per-Department Breakdown
 

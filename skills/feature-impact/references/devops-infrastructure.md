@@ -32,12 +32,18 @@ When a feature, task, or initiative affects DevOps or Infrastructure, use this c
 - [ ] Log levels appropriate (no sensitive data in logs)
 - [ ] Performance baseline established (before/after comparison)
 
+### External Service Provisioning
+- [ ] Third-party accounts created (error tracking, email, payments, analytics)
+- [ ] API keys/DSNs obtained and stored in secrets manager
+- [ ] Sandbox/test environment configured for third-party services
+- [ ] Rate limits and quotas checked (free tier sufficient or paid needed?)
+- [ ] Service SLA reviewed (uptime guarantees, support response time)
+
 ### Infrastructure Changes
 - [ ] DNS changes needed
 - [ ] SSL/TLS certificates needed
 - [ ] CDN config changes
 - [ ] Database scaling or config changes
-- [ ] New third-party service accounts
 
 ## Typical Dependencies
 

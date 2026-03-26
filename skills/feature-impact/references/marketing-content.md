@@ -38,6 +38,14 @@ When a feature, task, or initiative affects Marketing or Content, use this check
 - [ ] Paid media budget allocated (if applicable)
 - [ ] Influencer / partnership outreach (if applicable)
 
+### Video/Content Production (if applicable)
+- [ ] Script/storyboard created and approved
+- [ ] Production scheduled (shoot date, talent, location)
+- [ ] Edit/post-production timeline defined
+- [ ] Review cycle planned (draft → feedback → final)
+- [ ] Platform-specific versions (vertical for TikTok/Reels, landscape for YouTube)
+- [ ] External partner/influencer deliverable timeline confirmed
+
 ## Typical Dependencies
 
 **Marketing/Content needs FROM:**

@@ -19,6 +19,14 @@ When a feature, task, or initiative affects QA/Testing, use this checklist to id
 - [ ] Performance testing (if load/scale concerns exist)
 - [ ] Cross-browser/device testing (if frontend-heavy)
 - [ ] Accessibility testing (keyboard nav, screen reader, contrast)
+- [ ] Combinatorial/state-machine tests (if feature has enums, statuses, or permission matrices)
+
+### Combinatorial Testing Heuristic
+For features with N enum values, M state transitions, or P permission roles, estimate test matrix size:
+- **State machine**: N states x M valid transitions = minimum test scenarios
+- **Permission matrix**: P roles x A actions = minimum authorization tests
+- **Multi-enum**: Product of enum cardinalities for cross-cutting combinations
+- Example: 4 job states x 6 transitions x 2 user roles = 48 minimum test scenarios
 
 ### CI Integration
 - [ ] New tests added to CI pipeline
