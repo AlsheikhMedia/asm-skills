@@ -71,4 +71,4 @@ claude install ./dist/<skill-name>.skill
 - **page-cro**: Single-page conversion optimization. References `experiments.md`.
 
 ### Operations
-- **impact**: Cross-departmental impact analysis. Maps affected departments, deliverables, dependency chains, risks, execution order. 12 reference files (one per department/workstream). Defaults to ASM 8-workstream model but adapts via `.claude/org-structure.md` override.
+- **impact**: Cross-departmental impact analysis with execution tracking. 6-core department model (Product, Engineering, Design, QA, Marketing, Ops) works for any team. Extended 14-department mode when `.claude/org-structure.md` exists. Tracks deliverables via GitHub Issues, GitLab, Codeberg, Bitbucket, or local markdown. v2.0.

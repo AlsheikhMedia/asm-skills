@@ -1,4 +1,4 @@
-# QA/Testing — Impact Checklist
+# QA — Impact Checklist
 
 When a feature, task, or initiative affects QA/Testing, use this checklist to identify specific deliverables, dependencies, and risks.
 

@@ -1,10 +1,11 @@
 ---
 name: impact
 description: |
-  Cross-departmental impact analysis for features, tasks, or initiatives. Produces a structured report: which departments are affected, what each needs to deliver, dependency chains, risks if skipped, and execution order with parallel tracks. Works for any org structure. Use when someone says: "impact analysis", "what departments does this affect", "who needs to be involved", "cross-team dependencies", "who's blocking whom", "execution order", "rollout plan", "what's the blast radius", "which teams need to know", "what do I need before I build this", "break this down by team", "what could go wrong", "can we ship this in X weeks", "who else should know about this", or any question about cross-functional coordination for a feature or initiative.
+  Cross-departmental impact analysis for features, tasks, or initiatives. Produces a structured report: affected departments, deliverables, dependency chains, risks, and execution order. Use when someone says: "impact analysis", "what departments does this affect", "who needs to be involved", "cross-team dependencies", "what's the blast radius", "who's blocking whom", "can we ship this in X weeks", "break this down by team".
+allowed-tools: Bash(git:*) Bash(gh:*) Bash(glab:*) Bash(curl:*) Read Edit Write Glob Grep
 metadata:
   author: AlSheikh Media
-  version: 1.1.0
+  version: 2.0.0
 ---
 
 # Impact — Cross-Departmental Analysis
@@ -17,6 +18,8 @@ You are a senior program manager performing cross-departmental impact analysis. 
 
 **Full Mode**: Detailed checklists per department with deliverables, dependencies, risks, timeline, and parallel track visualization. Use when the initiative touches 3+ departments AND the timeline is 3+ days, involves infrastructure changes, or the user says "full" or "detailed."
 
+**Extended Mode**: Uses the full 14-department org model instead of the 6-core default. Activated when `.claude/org-structure.md` exists in the project, or the user says "extended" or "full org."
+
 If uncertain, start with Quick and offer to expand.
 
 ## Step 1: Understand the Initiative
@@ -24,7 +27,7 @@ If uncertain, start with Quick and offer to expand.
 Before mapping impact:
 
 1. **Classify the initiative type**: new feature / enhancement / infrastructure / campaign / pricing change / compliance change
-2. **Check for org structure**: look for `.claude/org-structure.md`, then `CLAUDE.md`, then use default from `references/org-structure.md`
+2. **Check for org structure**: look for `.claude/org-structure.md` → if found, use Extended mode with the full 14 departments from `references/org-structure.md`. If not, use the 6-core default.
 3. **Scan codebase context** (if available): recent git log for related work, existing specs or planning docs, architecture (routes, schemas, components)
 4. **Identify constraints**: stated timeline, budget, team size, external deadlines
 
@@ -32,7 +35,14 @@ Ask clarifying questions ONLY if genuinely ambiguous. If you can infer scope fro
 
 ## Step 2: Identify Affected Departments
 
-Map the initiative against the org structure. 14 departments across 3 layers — see `references/org-structure.md` for the full list. Most features touch 3-6 departments.
+### 6-Core Default (works for any team)
+
+1. **Product** — what to build (specs, requirements, launch planning)
+2. **Engineering** — how to build it (code, schema, API, deployment)
+3. **Design** — how it looks and works (UI, UX, accessibility)
+4. **QA** — does it work correctly (testing, regression, acceptance)
+5. **Marketing** — who knows about it (content, campaigns, sales enablement)
+6. **Ops** — how it runs (analytics, security, legal, support, finance)
 
 For each department, determine:
 - **Affected?** Yes/No. Each reference file has "When to Skip" criteria — use them.
@@ -40,6 +50,10 @@ For each department, determine:
 - **Category**: Blocking / Parallel / Follow-up
 
 Load reference files ONLY for affected departments.
+
+### Extended Mode (14 departments)
+
+When `.claude/org-structure.md` exists or user requests extended analysis, load `references/org-structure.md` for the full 14-department model with Foundation Layer, Execution Layer, and Engineering Functions.
 
 ## Step 3: Map Dependencies
 
@@ -122,14 +136,10 @@ Also assess:
 
 | Step | Department | Deliverable | Est. | Depends On |
 |------|------------|-------------|------|------------|
-```
 
-If all work is sequential, use a single phase. State: "No parallel tracks — strict sequential chain."
+<!-- If all work is sequential: use single phase, state "No parallel tracks — strict sequential chain." -->
+<!-- For experiments: insert gate between phases — "Does [metric] meet [threshold]? If no → [pivot plan]." -->
 
-For experimental initiatives, insert a gate between phases:
-> **Gate:** Does [metric] meet [threshold]? If no → [pivot plan].
-
-```markdown
 ## Per-Department Breakdown
 
 ### [Department] — [Impact Level]
@@ -166,6 +176,8 @@ Ask the user:
 1. **Deep dive?** "Want me to go deeper on any department?"
 2. **What-if?** "Want to explore what happens if we cut [X]?"
 3. **Track deliverables?** "Want me to track these as issues or a local task list?"
+
+**If the user disagrees** with a department assignment or dependency, update the analysis immediately. Don't argue. The user knows their org better than the reference files do.
 
 ## Step 6: Create the Task List
 
@@ -206,19 +218,14 @@ If open items found:
 ## When to Read Reference Files
 
 Load only for affected departments:
-- Development → `references/development.md`
 - Product → `references/product.md`
-- Marketing/Content → `references/marketing-content.md`
-- Design/UX → `references/design-ux.md`
-- QA/Testing → `references/qa-testing.md`
-- DevOps/Infrastructure → `references/devops-infrastructure.md`
-- Sales → `references/sales.md`
-- Customer Success → `references/customer-success.md`
-- Research → `references/research.md`
-- Brand, Legal, or Finance → `references/brand-legal-finance.md`
-- Analytics or Security → `references/analytics-security.md`
-- Org structure → `references/org-structure.md`
-- Task tracking (local, GitHub, GitLab, Codeberg, Bitbucket) → `references/tracking.md`
+- Engineering → `references/engineering.md`
+- Design → `references/design.md`
+- QA → `references/qa.md`
+- Marketing → `references/marketing.md`
+- Ops → `references/ops.md`
+- Extended org structure → `references/org-structure.md`
+- Task tracking → `references/tracking.md`
 
 ## Key Principles
 
@@ -238,26 +245,24 @@ Load only for affected departments:
 # Impact — Referral Program
 
 **Scope:** Existing customers can invite others via unique link; referred user gets 1 month free, referrer gets credit.
-**Departments affected:** 6
-**Critical path:** Product → Design → Development → QA → Marketing
+**Departments affected:** 5
+**Critical path:** Product → Design → Engineering → QA
 **Timeline:** 2-3 weeks
 
 | Department | Impact | Priority | Key Deliverable | Blocked By |
 |------------|--------|----------|-----------------|------------|
 | Product | Medium | Blocking | Spec: referral logic, reward rules, abuse limits | None |
 | Design | Medium | Blocking | Referral page mockup, share widget, dashboard widget | Product |
-| Development | Heavy | Blocking | Referral schema + API + UI + credit system | Design |
-| QA | Medium | Parallel | Referral journey test, abuse scenario tests | Development |
-| Legal | Light | Parallel | Review referral terms, anti-fraud clause | None |
-| Marketing | Medium | Follow-up | Announcement email, referral page copy, social posts | Development |
+| Engineering | Heavy | Blocking | Referral schema + API + UI + credit system | Design |
+| QA | Medium | Parallel | Referral journey test, abuse scenario tests | Engineering |
+| Marketing | Medium | Follow-up | Announcement email, referral page copy, social posts | Engineering |
 
 ## Dependency Chain
-Product → Design → Development → QA
+Product → Design → Engineering → QA
                                   ↘ Marketing (after dev build)
-Legal (parallel, must complete before launch)
 
 ## Top Risks
 1. Abuse/gaming — users self-referring with burner emails. Need rate limiting + same-org detection.
 2. Credit accounting — referral credits must integrate with existing billing. If Stripe setup is complex, this blocks launch.
-3. Legal terms missing — launching referral without anti-fraud terms creates liability.
+3. Legal terms missing — launching referral without anti-fraud terms creates liability (Ops: Legal).
 ```

@@ -1,15 +1,22 @@
-# Marketing & Content — Impact Checklist
-
-When a feature, task, or initiative affects Marketing or Content, use this checklist to identify specific deliverables, dependencies, and risks.
+# Marketing — Impact Checklist
 
 ## When to Skip
 
+### Content & Campaigns
 **Typically affected when:** user-facing feature launch, campaign, pricing change
 **Skip if:** internal tooling, infrastructure sprint, bug fix, backend-only change invisible to users
 
-## What to Check
+### Sales Enablement
+**Typically affected when:** new feature visible to prospects, pricing change, competitive positioning shift
+**Skip if:** internal tooling, infrastructure change, bug fix, backend change invisible to customers
 
-### Content & Messaging
+## Content & Campaigns
+
+When a feature, task, or initiative affects Marketing or Content, use this checklist to identify specific deliverables, dependencies, and risks.
+
+### What to Check
+
+#### Content & Messaging
 - [ ] Changelog / release notes entry
 - [ ] Blog post or announcement (if significant enough)
 - [ ] Feature page update or new feature page
@@ -19,7 +26,7 @@ When a feature, task, or initiative affects Marketing or Content, use this check
 - [ ] Email sequence updates (onboarding, nurture, upgrade)
 - [ ] Social media posts (launch announcement, feature highlight)
 
-### SEO & Discovery
+#### SEO & Discovery
 - [ ] New pages need SEO optimization (title, meta, headings, schema markup)
 - [ ] Existing pages need content refresh (feature descriptions, screenshots)
 - [ ] Comparison pages need updating (vs. competitor feature tables)
@@ -27,7 +34,7 @@ When a feature, task, or initiative affects Marketing or Content, use this check
 - [ ] Internal linking to/from new content
 - [ ] Programmatic SEO pages affected (template changes, new data)
 
-### Creative Assets
+#### Creative Assets
 - [ ] Product screenshots needed (feature in action)
 - [ ] Video/GIF demos needed
 - [ ] Social media graphics
@@ -35,7 +42,7 @@ When a feature, task, or initiative affects Marketing or Content, use this check
 - [ ] Ad creative (if running paid campaigns)
 - [ ] Presentation deck updates
 
-### Campaign Coordination
+#### Campaign Coordination
 - [ ] Campaign timeline aligned with feature launch date
 - [ ] Pre-launch content ready (teaser, waitlist, beta signup)
 - [ ] Launch-day content ready (announcement, demo, social)
@@ -43,7 +50,7 @@ When a feature, task, or initiative affects Marketing or Content, use this check
 - [ ] Paid media budget allocated (if applicable)
 - [ ] Influencer / partnership outreach (if applicable)
 
-### Video/Content Production (if applicable)
+#### Video/Content Production (if applicable)
 - [ ] Script/storyboard created and approved
 - [ ] Production scheduled (shoot date, talent, location)
 - [ ] Edit/post-production timeline defined
@@ -51,7 +58,7 @@ When a feature, task, or initiative affects Marketing or Content, use this check
 - [ ] Platform-specific versions (vertical for TikTok/Reels, landscape for YouTube)
 - [ ] External partner/influencer deliverable timeline confirmed
 
-## Typical Dependencies
+### Typical Dependencies
 
 **Marketing/Content needs FROM:**
 
@@ -73,9 +80,9 @@ When a feature, task, or initiative affects Marketing or Content, use this check
 | Product | Market feedback, content performance data | Product needs to know what resonates |
 | Analytics | Campaign tracking requirements, attribution needs | Analytics needs to measure campaigns |
 
-## Common Deliverables by Initiative Type
+### Common Deliverables by Initiative Type
 
-### New Feature Launch
+#### New Feature Launch
 - [ ] Changelog entry (factual, specific)
 - [ ] Feature page or section (benefit-led, not feature-led)
 - [ ] Email announcement (segment: affected users)
@@ -83,7 +90,7 @@ When a feature, task, or initiative affects Marketing or Content, use this check
 - [ ] Updated screenshots in existing marketing pages
 - [ ] Internal talking points for Sales/CS
 
-### Campaign
+#### Campaign
 - [ ] Landing page copy + design
 - [ ] Email sequence (awareness → consideration → conversion)
 - [ ] Social media calendar (content + dates)
@@ -91,18 +98,18 @@ When a feature, task, or initiative affects Marketing or Content, use this check
 - [ ] UTM tracking plan
 - [ ] Success metrics + kill criteria
 
-### Pricing/Packaging Change
+#### Pricing/Packaging Change
 - [ ] Pricing page update
 - [ ] Feature comparison table update
 - [ ] FAQ update (pricing questions)
 - [ ] Email to existing customers (if it affects them)
 - [ ] Sales enablement update (new pricing talk track)
 
-### Infrastructure / Non-User-Facing
+#### Infrastructure / Non-User-Facing
 - [ ] Usually no marketing deliverables
 - [ ] Exception: If it improves performance, reliability, or security — consider a "behind the scenes" post
 
-## Effort Estimation Guide
+### Effort Estimation Guide
 
 | Deliverable | Typical Range |
 |------------|--------------|
@@ -116,7 +123,7 @@ When a feature, task, or initiative affects Marketing or Content, use this check
 | Product screenshots | 1-2 hours |
 | Video demo | 0.5-2 days |
 
-## Common Mistakes
+### Common Mistakes
 
 - Writing marketing content before the feature is stable (screenshots become outdated)
 - Generic messaging ("we're excited to announce...") instead of specific value
@@ -126,3 +133,87 @@ When a feature, task, or initiative affects Marketing or Content, use this check
 - Launching content same day as feature with no buffer (no time to fix issues)
 - Not coordinating with Sales on messaging (Sales says one thing, marketing says another)
 - Skipping the changelog (customers who check for updates find nothing)
+
+## Sales Enablement
+
+When a feature, task, or initiative affects the Sales team, use this checklist to identify specific deliverables, dependencies, and risks.
+
+### What to Check
+
+#### Enablement
+- [ ] Demo script updated (feature can be shown in standard demo)
+- [ ] Talking points prepared (what it is, who it's for, why it matters)
+- [ ] Objection handling updated (common pushbacks addressed)
+- [ ] Battle cards updated (competitive positioning with new feature)
+- [ ] Pricing/packaging changes communicated (if applicable)
+- [ ] FAQ document updated (answers to likely prospect questions)
+
+#### Pipeline Impact
+- [ ] Existing deals affected (feature changes that impact in-flight conversations)
+- [ ] New objection handling needed (feature limitations or changes)
+- [ ] Upgrade/upsell opportunity identified (if feature is behind a tier)
+- [ ] Competitive positioning changed (closes a gap or opens a new one)
+
+#### Customer Communication
+- [ ] Existing customer notification needed (if behavior changes)
+- [ ] Upgrade path explanation prepared (for customers on lower tiers)
+- [ ] Migration guidance written (if workflow changes significantly)
+- [ ] Success stories / early adopter testimonials planned
+
+### Typical Dependencies
+
+**Sales needs FROM:**
+
+| Department | What | Why |
+|-----------|------|-----|
+| Product | Feature positioning, value props, tier placement | Sales needs to know what to say |
+| Marketing/Content | Collateral, case studies, one-pagers | Sales needs materials to share |
+| Development | Working demo, confirmed ship date | Sales needs to demo accurately |
+| Customer Success | Customer feedback, usage patterns | Sales uses success stories to sell |
+
+**Sales PRODUCES for:**
+
+| Department | What | Why |
+|-----------|------|-----|
+| Product | Market feedback, prospect objections, feature requests | Product needs field intelligence |
+| Marketing/Content | Customer language, common questions, positioning feedback | Marketing needs real-world messaging data |
+
+### Common Deliverables by Initiative Type
+
+#### New Feature
+- [ ] Updated demo script
+- [ ] Feature one-pager
+- [ ] Talking points document
+- [ ] Updated battle card (if competitive)
+
+#### Pricing Change
+- [ ] New pricing talk track
+- [ ] Grandfathering/migration explanation for existing customers
+- [ ] Updated proposals/quote templates
+- [ ] Objection handling for price increase
+
+#### New Product/Vertical
+- [ ] Complete sales playbook
+- [ ] Target account list
+- [ ] Outreach sequence templates
+- [ ] Discovery call framework
+
+### Effort Estimation Guide
+
+| Deliverable | Typical Range |
+|------------|--------------|
+| Demo script update | 2-4 hours |
+| Battle card update | 2-4 hours |
+| Feature one-pager | 0.5-1 day |
+| Sales playbook (new product) | 3-5 days |
+| Pricing talk track | 1-2 hours |
+| Outreach sequence (5 emails) | 1-2 days |
+
+### Common Mistakes
+
+- Sales learns about feature from customers (should hear about it first internally)
+- No demo script (Sales improvises inconsistently)
+- Conflicting messaging between Sales and Marketing
+- No objection handling prepared (Sales gets stuck on common pushbacks)
+- Feature launched without Sales training (support calls get routed to Sales)
+- Pricing changes communicated day-of (no time to adjust pipeline conversations)

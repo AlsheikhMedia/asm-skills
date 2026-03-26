@@ -1,4 +1,4 @@
-# Design/UX — Impact Checklist
+# Design — Impact Checklist
 
 When a feature, task, or initiative affects the Design/UX team, use this checklist to identify specific deliverables, dependencies, and risks.
 
