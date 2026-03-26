@@ -165,61 +165,43 @@ When timeline is infeasible, help the user make cuts. For each deliverable that 
 Ask the user:
 1. **Deep dive?** "Want me to go deeper on any department?"
 2. **What-if?** "Want to explore what happens if we cut [X]?"
-3. **Track on GitHub?** "Want me to create GitHub Issues to track these deliverables?"
+3. **Track deliverables?** "Want me to track these as issues or a local task list?"
 
 ## Step 6: Create the Task List
 
-If the user wants to track deliverables, read `references/tracking.md` for templates and commands, then:
-
-1. **Detect provider**: parse `git remote get-url origin`, check for CLI availability
+1. **Detect provider**: `git remote get-url origin` → match `github.com` / `gitlab.com` / `codeberg.org` / `bitbucket.org`. Check CLI availability (`which gh` / `which glab`). Fall back to local if unavailable.
 2. **Ask**: "Detected [provider]. Track with [provider] issues, or keep it local?"
-3. **Generate a slug** from the initiative name (e.g., "Add referral program" → `impact-referral-program`)
+3. **Generate slug**: kebab-case from initiative name (e.g., `impact-referral-program`)
+4. **Read `references/tracking.md`** for templates and provider-specific commands
+5. **Create tasks**: tracking issue/file + one item per affected department with deliverables, blockers, and phase
+6. **Report**: "Created {N} items. [Tracking issue #{number} / Task list at .claude/impact-tasks.md]."
 
-**If remote tracking (GitHub/GitLab/Codeberg/Bitbucket):**
-4. Create one tracking issue (epic) with dependency chain + progress checklist
-5. Create one issue per affected department with deliverables + blocked-by/unblocks
-6. Link them via issue numbers in the tracking issue body
-7. Apply labels: `impact`, `impact-{slug}`, `dept-{name}`, `phase-{n}`, priority
-8. Report: "Created {N} issues. Tracking issue: #{number}."
-
-**If local tracking:**
-4. Write `.claude/impact-tasks.md` with structured checkbox list (see `references/tracking.md` for format)
-5. Group by phase, mark blockers, set status count
-6. Report: "Created task list at .claude/impact-tasks.md with {N} items."
-
-**If user declines all tracking:** use Claude Code TaskCreate for session-only visibility.
+If user declines all tracking: use Claude Code TaskCreate for session-only visibility.
 
 ## Step 7: Execution Loop
 
 When the user says "let's work through the list", "next item", or comes back in a new session:
 
-1. **List open items**:
-   - Remote: query provider API/CLI for open issues with `impact-{slug}` label
-   - Local: read `.claude/impact-tasks.md`, find unchecked items
-2. **Find unblocked items**: check if each item's blockers are resolved (closed issues or checked boxes)
-3. **Present the next item**: "Next unblocked: [Department]: [deliverable]. Want me to work on it, or spin an agent?"
-4. **For non-blocking items**: offer to spawn parallel agents — "3 items are unblocked and non-blocking. Spin agents for all 3?"
-5. **Work the item**: do the actual work (write code, update docs, review, etc.)
-6. **Mark done**:
-   - Remote: close issue via CLI/API with completion comment
-   - Local: change `[ ]` to `[x]`, append `— DONE [date]`
-7. **Update tracking**: update progress count (remote: edit tracking issue body; local: update status line)
-8. **Repeat** until all items are done
-9. **When empty**: "Impact list clear — all {N} items complete. Ship it."
+1. **List open items**: read local file or query provider for open issues
+2. **Find unblocked**: check if each item's blockers are resolved
+3. **Present next**: "Next unblocked: [Department]: [deliverable]. Work on it, or spin an agent?"
+4. **Non-blocking items**: "3 items are unblocked and non-blocking. Spin agents for all 3?"
+5. **Work the item**
+6. **Mark done**: close issue or check box + append `— DONE [date]`
+7. **Update progress count**
+8. **Repeat** until empty
+9. **Done**: "Impact list clear — all {N} items complete. Ship it."
 
 ## Resuming Across Sessions
 
-On every trigger, before starting a new analysis, check for existing work:
+On trigger, check for existing work **locally first** (fast):
+- Check if `.claude/impact-tasks.md` exists with unchecked items
+- Only query remote if local file doesn't exist AND user's prompt is ambiguous ("next item", "resume", "what's left")
+- Skip resume check entirely if user clearly wants a new analysis ("impact analysis for X")
 
-- **Remote**: query provider for open issues with `impact` label
-- **Local**: check if `.claude/impact-tasks.md` exists with unchecked items
-
-If open items exist:
-- "Found {N} open impact items from [{initiative name}]. Resume working through them? Or start a new analysis?"
-- If resume: jump straight to Step 7 (Execution Loop)
-- If new: proceed with Step 1 as normal
-
-This makes the skill stateful across sessions — remote issues or local file are the persistent memory.
+If open items found:
+- "Found {N} open impact items from [{initiative name}]. Resume? Or start new?"
+- Resume → Step 7. New → Step 1.
 
 ## When to Read Reference Files
 
