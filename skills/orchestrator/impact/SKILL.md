@@ -186,7 +186,14 @@ Ask the user:
 3. **Generate slug**: kebab-case from initiative name (e.g., `impact-referral-program`)
 4. **Read `references/tracking.md`** for templates and provider-specific commands
 5. **Create tasks**: tracking issue/file + one item per affected department with deliverables, blockers, and phase
-6. **Report**: "Created {N} items. [Tracking issue #{number} / Task list at .claude/impact-tasks.md]."
+6. **Add execution state table** to `.claude/impact-tasks.md`:
+   ```
+   ## Execution State
+   <!-- Auto-updated by exec modules during pipeline execution -->
+   | Department | Pipeline Step | Status | Last Updated |
+   |------------|-------------|--------|--------------|
+   ```
+7. **Report**: "Created {N} items. [Tracking issue #{number} / Task list at .claude/impact-tasks.md]."
 
 If user declines all tracking: use Claude Code TaskCreate for session-only visibility.
 
@@ -206,12 +213,35 @@ When the user says "let's work through the list", "next item", or comes back in 
    - Support content (KB articles, FAQ, canned responses) → `references/exec-support.md`
    - Pricing/finance (unit economics, revenue model) → `references/exec-finance.md`
    - Brand/positioning (messaging, tone, visual identity) → `references/exec-brand.md`
-   - Code/infrastructure tasks → use Claude's native capability (no exec module needed)
+   - Product specs (PRD, feature spec, launch checklist) → `references/exec-product.md`
+   - Design artifacts (design system, page spec, component spec) → `references/exec-design.md`
+   - Code/infrastructure (feature build, bug fix, refactor, deploy) → `references/exec-engineering.md`
 6. **Do the work**: follow the exec module's workflow to produce the actual deliverable
 7. **Mark done**: close issue or check box + append `— DONE [date]`
 8. **Update progress count**
 9. **Repeat** until empty
 10. **Done**: "Impact list clear — all {N} items complete. Ship it."
+
+### Cross-Department Triggers
+
+During execution, an exec module may discover it needs input from another department not identified in the original analysis. This is normal — analysis catches 80% of dependencies, execution reveals the rest.
+
+When an exec module reports a cross-department trigger:
+
+1. **Read the trigger** from `.claude/impact-tasks.md` — it includes: which module paused, at which step, what it needs, from which department
+2. **Add the new dependency** to the task list with correct blocking relationships
+3. **Route to the needed department's exec module** — load and execute the specific deliverable
+4. **Mark the dependency resolved** in the state file
+5. **Resume the paused exec module** — it reads the state file, finds its checkpoint, and continues from where it left off
+
+State file format for triggers:
+```
+## Cross-Department Triggers (auto-generated)
+- [ ] TRIGGER: [Engineering Phase 3] needs [Legal] — Update ToS for client data access
+  - Status: pending | in-progress | resolved
+  - Paused at: exec-engineering.md, Phase 3, Step 2
+  - Resume after: Legal delivers ToS update
+```
 
 ## Resuming Across Sessions
 
@@ -237,6 +267,9 @@ If open items found:
 - Task tracking → `references/tracking.md`
 
 **Execution** (Step 7 — doing the work):
+- Product specs (PRD, feature spec, launch checklist) → `references/exec-product.md`
+- Design artifacts (design system, page spec, component spec) → `references/exec-design.md`
+- Code/infrastructure (feature build, bug fix, refactor, deploy) → `references/exec-engineering.md`
 - Writing docs → `references/exec-tech-writer.md`
 - Legal documents → `references/exec-legal.md`
 - Social media content → `references/exec-social-media.md`
@@ -257,30 +290,8 @@ If open items found:
 
 **No filler.** Department not affected? Don't mention it. Risk is theoretical? Don't list it.
 
-## Example: Quick Mode — "Add a referral program to our SaaS app"
+## Example: Quick Mode — "Add a referral program"
 
-```markdown
-# Impact — Referral Program
-
-**Scope:** Existing customers can invite others via unique link; referred user gets 1 month free, referrer gets credit.
-**Departments affected:** 5
-**Critical path:** Product → Design → Engineering → QA
-**Timeline:** 2-3 weeks
-
-| Department | Impact | Priority | Key Deliverable | Blocked By |
-|------------|--------|----------|-----------------|------------|
-| Product | Medium | Blocking | Spec: referral logic, reward rules, abuse limits | None |
-| Design | Medium | Blocking | Referral page mockup, share widget, dashboard widget | Product |
-| Engineering | Heavy | Blocking | Referral schema + API + UI + credit system | Design |
-| QA | Medium | Parallel | Referral journey test, abuse scenario tests | Engineering |
-| Marketing | Medium | Follow-up | Announcement email, referral page copy, social posts | Engineering |
-
-## Dependency Chain
-Product → Design → Engineering → QA
-                                  ↘ Marketing (after dev build)
-
-## Top Risks
-1. Abuse/gaming — users self-referring with burner emails. Need rate limiting + same-org detection.
-2. Credit accounting — referral credits must integrate with existing billing. If Stripe setup is complex, this blocks launch.
-3. Legal terms missing — launching referral without anti-fraud terms creates liability (Ops: Legal).
-```
+Scope: invite link, 1 month free for referred, credit for referrer. 5 departments, 2-3 weeks.
+Critical path: Product (spec) → Design (mockups) → Engineering (schema+API+UI) → QA (journey tests). Marketing runs parallel after dev build.
+Top risks: abuse/gaming (self-referral), credit accounting (Stripe integration), missing legal anti-fraud terms.

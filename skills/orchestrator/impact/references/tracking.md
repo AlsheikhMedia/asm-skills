@@ -28,6 +28,28 @@ File: `.claude/impact-tasks.md`
 
 Mark done: `- [x] **Product**: Feature spec — DONE 2026-03-26`
 
+### Execution State
+
+Appended to the local tracking file by exec modules during pipeline execution. Enables checkpointing and cross-department trigger tracking.
+
+```markdown
+## Execution State
+
+<!-- Auto-updated by exec modules during pipeline execution -->
+| Department | Pipeline Step | Status | Last Updated |
+|------------|-------------|--------|--------------|
+| Product | Spec complete | done | 2026-03-27 |
+| Engineering | Phase 3: Implement | paused (needs Legal) | 2026-03-27 |
+| Legal | ToS update | in-progress | 2026-03-27 |
+
+## Cross-Department Triggers (auto-generated)
+
+- [ ] TRIGGER: [Engineering Phase 3] needs [Legal] — Update ToS for client data access
+  - Status: pending | in-progress | resolved
+  - Paused at: exec-engineering.md, Phase 3, Step 2
+  - Resume after: Legal delivers ToS update
+```
+
 ---
 
 ## Remote Issue Templates (All Providers)
