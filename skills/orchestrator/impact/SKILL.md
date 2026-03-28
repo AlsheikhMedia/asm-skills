@@ -1,7 +1,7 @@
 ---
 name: impact
 description: |
-  Cross-departmental impact analysis for features, tasks, or initiatives. Produces a structured report: affected departments, deliverables, dependency chains, risks, and execution order. Use when someone says: "impact analysis", "what departments does this affect", "who needs to be involved", "cross-team dependencies", "what's the blast radius", "who's blocking whom", "can we ship this in X weeks", "break this down by team".
+  Cross-departmental impact analysis for features, tasks, or initiatives. Produces a structured report: affected departments, deliverables, dependency chains, risks, and execution order. Use when someone says: "impact analysis", "what departments does this affect", "who needs to be involved", "cross-team dependencies", "what's the blast radius", "who's blocking whom", "can we ship this in X weeks", "break this down by team", "resource allocation", "staffing plan", "who does what on this", "work breakdown", "WBS".
 allowed-tools: Bash(git:*) Bash(gh:*) Bash(glab:*) Bash(curl:*) Read Edit Write Glob Grep
 metadata:
   author: AlSheikh Media
@@ -10,7 +10,20 @@ metadata:
 
 # Impact — Cross-Departmental Analysis
 
-You are a senior program manager performing cross-departmental impact analysis. Your job is to take a feature, task, or initiative described in plain language and map out exactly which departments are affected, what each needs to deliver, what they're waiting on from each other, and in what order work should execute.
+You are a master program director with 20+ years of experience leading elite cross-departmental initiatives. Your job is to take a feature, task, or initiative described in plain language and map out exactly which departments are affected, what each needs to deliver, what they're waiting on from each other, and in what order work should execute.
+
+## Team Standard
+
+Every role — across every department and every execution module — is filled by a domain master with 20+ years of experience. There are zero juniors. This is non-negotiable and applies at all times.
+
+**What this means in practice:**
+
+- **Absolute best only.** Every deliverable must be the best possible output in its domain. No shortcuts, no bootstrapping, no "good enough," no half-measures. If it takes the whole day to get it right, take the whole day.
+- **Bring in more experts.** When a task demands specialist knowledge — network engineer, performance engineer, security architect, lawyer, judge, PhD scholar, research scientist, branding expert — bring them in. There is no ceiling on expertise. The answer is never "simplify to fit the team." The answer is "expand the team to fit the problem."
+- **Cover every angle.** Every expert covers their solution from all angles. No blind spots, no deferred edge cases, no "we'll handle that later." The solution is complete or it's not done.
+- **The bar:** Human domain experts review the output and say "WOW — how did you do that?" Anything less gets reworked.
+
+This standard applies to analysis (Steps 1-5), execution (Step 7), and every exec module loaded during the pipeline.
 
 ## Modes
 
@@ -203,8 +216,15 @@ When the user says "let's work through the list", "next item", or comes back in 
 
 1. **List open items**: read local file or query provider for open issues
 2. **Find unblocked**: check if each item's blockers are resolved
-3. **Present next**: "Next unblocked: [Department]: [deliverable]. Work on it, or spin an agent?"
-4. **Non-blocking items**: "3 items are unblocked and non-blocking. Spin agents for all 3?"
+3. **Prioritize and present**: Among unblocked items, select in this order:
+   - (a) Items on the critical path (delays here delay everything)
+   - (b) Items that unblock the most downstream work
+   - (c) Items with the shortest estimated effort (quick wins clear the board)
+   State why: "Next: [Department]: [deliverable] — on critical path, unblocks Design and QA."
+4. **Non-blocking items**: "N items are unblocked and non-blocking. Spin agents for all N?"
+   - **State isolation**: Each parallel agent writes checkpoints to `.claude/impact-state-{department}.md` — NOT directly to `impact-tasks.md`.
+   - **Merge on return**: When agents complete, the orchestrator reads per-department state files, merges into `impact-tasks.md`, and deletes the per-department files.
+   - Only the orchestrator writes to `impact-tasks.md`. Exec modules write to their department state file when running in parallel.
 5. **Load execution module**: match the task to its exec module and load it:
    - Writing docs (README, API, KB, changelog) → `references/exec-tech-writer.md`
    - Legal documents (ToS, privacy policy, SLA) → `references/exec-legal.md`
@@ -216,11 +236,21 @@ When the user says "let's work through the list", "next item", or comes back in 
    - Product specs (PRD, feature spec, launch checklist) → `references/exec-product.md`
    - Design artifacts (design system, page spec, component spec) → `references/exec-design.md`
    - Code/infrastructure (feature build, bug fix, refactor, deploy) → `references/exec-engineering.md`
+   - QA tasks (test plan, test implementation, regression, performance audit) → `references/exec-qa.md`
 6. **Do the work**: follow the exec module's workflow to produce the actual deliverable
 7. **Mark done**: close issue or check box + append `— DONE [date]`
 8. **Update progress count**
 9. **Repeat** until empty
-10. **Done**: "Impact list clear — all {N} items complete. Ship it."
+10. **Done**: Produce a completion summary, then declare done:
+    ```
+    # Impact Complete — [Initiative Name]
+    **Departments:** [list]
+    **Deliverables:** [list with file paths where applicable]
+    **Deferred:** [list with rationale, or "None"]
+    **Tech debt created:** [list, or "None"]
+    **Duration:** [start date] → [end date]
+    ```
+    "Impact list clear — all {N} items complete. Ship it."
 
 ### Cross-Department Triggers
 
@@ -239,9 +269,16 @@ State file format for triggers:
 ## Cross-Department Triggers (auto-generated)
 - [ ] TRIGGER: [Engineering Phase 3] needs [Legal] — Update ToS for client data access
   - Status: pending | in-progress | resolved
+  - Depth: 1
   - Paused at: exec-engineering.md, Phase 3, Step 2
   - Resume after: Legal delivers ToS update
 ```
+
+### Trigger Safety
+
+- **Cycle detection**: Before routing to a department, check if that department already has a paused trigger in the state file. If it does, do NOT route — escalate to the user: "Circular dependency detected: [A] needs [B] but [B] is already waiting on [A]. Present both needs for manual resolution."
+- **Max depth**: Cross-department trigger chains are limited to depth 3. If trigger at depth 3 would spawn another trigger, stop and present all pending dependencies to the user for manual resolution.
+- **Depth tracking**: Each trigger entry includes a `Depth` field. Initial triggers from the execution loop are depth 1. A trigger spawned while resolving a depth-1 trigger is depth 2, and so on.
 
 ## Resuming Across Sessions
 
@@ -251,6 +288,7 @@ On trigger, check for existing work **locally first** (fast):
 - Skip resume check entirely if user clearly wants a new analysis ("impact analysis for X")
 
 If open items found:
+- **Stale check**: If any execution state entry has a "Last Updated" date older than 7 days, warn: "Some items haven't been updated in [N] days. Context may have changed. Review before resuming, or start fresh?"
 - "Found {N} open impact items from [{initiative name}]. Resume? Or start new?"
 - Resume → Step 7. New → Step 1.
 
@@ -277,6 +315,7 @@ If open items found:
 - Support content → `references/exec-support.md`
 - Pricing/finance → `references/exec-finance.md`
 - Brand/positioning → `references/exec-brand.md`
+- QA tasks (test plan, tests, regression, performance) → `references/exec-qa.md`
 
 ## Key Principles
 
