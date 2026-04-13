@@ -2,7 +2,7 @@
 
 Make Claude Code an expert at the things you actually need done -- launching products, writing copy, optimizing funnels, coordinating across departments. Install a skill once, and it just works.
 
-13 skills by [AlSheikh Media](https://alsheikhmedia.com). Built from shipping real SaaS, not theory.
+14 skills by [AlSheikh Media](https://alsheikhmedia.com). Built from shipping real SaaS, not theory.
 
 ## Quick Start
 
@@ -53,6 +53,7 @@ Once installed, just talk to Claude Code normally. Skills activate automatically
 | [product-marketing-context](skills/direct-tools/product-marketing-context/) | You're tired of re-explaining your product to every marketing skill. Set this up once, and every other marketing skill already knows your positioning, audience, and voice. | *"Set up marketing context"* |
 | [programmatic-seo](skills/direct-tools/programmatic-seo/) | You want organic traffic at scale. Generates SEO pages from templates and data -- directories, comparisons, location pages. 12 playbooks. | *"Build comparison pages for our competitors"* |
 | [seo-audit](skills/direct-tools/seo-audit/) | Your organic traffic is underperforming. Diagnoses technical SEO, on-page issues, content quality, and AI search readiness. | *"Audit our site's SEO"* |
+| [human-touch](skills/direct-tools/human-touch/) | Your AI-generated content sounds robotic. Scans for 29+ AI patterns, rewrites to sound natural, scores humanness 0–100. Voice profiles for brand consistency. Full EN + Arabic support (MSA rewrite, Levantine flag-only). | *"Humanize this blog post"* |
 
 ### Direct Tools -- CRO
 

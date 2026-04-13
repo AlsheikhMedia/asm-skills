@@ -48,7 +48,7 @@ claude install github:AlsheikhMedia/asm-skills/skills/<skill-name>
 claude install ./dist/<skill-name>.skill
 ```
 
-## Current Skills (13)
+## Current Skills (14)
 
 ### Infrastructure
 - **launch-readiness**: 12-domain SaaS audit (error monitoring, CI/CD, migrations, staging, design system, page specs, testing, E2E, seed data, security, observability, feature flags). Audit or bootstrap mode. Reference docs loaded lazily by domain tier.
@@ -65,6 +65,9 @@ claude install ./dist/<skill-name>.skill
 - **product-marketing-context**: Creates `.claude/product-marketing-context.md` referenced by other marketing skills.
 - **programmatic-seo**: SEO-driven pages at scale. References `playbooks.md`.
 - **seo-audit**: Technical + on-page SEO diagnosis. References `aeo-geo-patterns.md` and `ai-writing-detection.md`.
+
+### Content
+- **human-touch**: AI content humanizer. 3 modes: scan (detect AI patterns), rewrite (transform to natural), audit (full report). 29+ pattern database. Human score 0–100. Voice profiles for brand consistency. Full EN + Arabic MSA pipeline; Levantine flag-only. References `ai-tells.md`, `voice-profiles.md`, `arabic-guide.md`, `self-check.md`.
 
 ### CRO
 - **cro-funnel**: Full-funnel CRO — forms, signup, onboarding, paywall. MIT license (AgentKits attribution).
